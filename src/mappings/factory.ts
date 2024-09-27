@@ -1,13 +1,12 @@
 import { BigInt, log } from '@graphprotocol/graph-ts'
 
 import { populateEmptyPools } from '../backfill'
-import { PoolCreated } from '../types/Factory/Factory'
-import { Factory } from '../types/schema'
-import { Bundle, Pool, Token } from '../types/schema'
-import { Pool as PoolTemplate } from '../types/templates'
 import { getSubgraphConfig, SubgraphConfig } from '../utils/chains'
 import { fetchTokenDecimals, fetchTokenName, fetchTokenSymbol, fetchTokenTotalSupply } from '../utils/token'
 import { ADDRESS_ZERO, ONE_BI, ZERO_BD, ZERO_BI } from './../utils/constants'
+import { PoolCreated } from '../../generated/Factory/Factory'
+import { Factory, Pool, Token } from '../../generated/schema'
+import { Pool as PoolTemplate } from '../../generated/templates'
 
 // The subgraph handler must have this signature to be able to handle events,
 // however, we invoke a helper in order to inject dependencies for unit tests.
@@ -36,22 +35,8 @@ export function handlePoolCreatedHelper(
   if (factory === null) {
     factory = new Factory(factoryAddress)
     factory.poolCount = ZERO_BI
-    factory.totalVolumeETH = ZERO_BD
-    factory.totalVolumeUSD = ZERO_BD
-    factory.untrackedVolumeUSD = ZERO_BD
-    factory.totalFeesUSD = ZERO_BD
-    factory.totalFeesETH = ZERO_BD
-    factory.totalValueLockedETH = ZERO_BD
-    factory.totalValueLockedUSD = ZERO_BD
-    factory.totalValueLockedUSDUntracked = ZERO_BD
-    factory.totalValueLockedETHUntracked = ZERO_BD
     factory.txCount = ZERO_BI
     factory.owner = ADDRESS_ZERO
-
-    // create new bundle for tracking eth price
-    const bundle = new Bundle('1')
-    bundle.ethPriceUSD = ZERO_BD
-    bundle.save()
 
     populateEmptyPools(event, poolMappings, whitelistTokens, tokenOverrides)
   }
@@ -77,14 +62,8 @@ export function handlePoolCreatedHelper(
     }
 
     token0.decimals = decimals
-    token0.derivedETH = ZERO_BD
     token0.volume = ZERO_BD
-    token0.volumeUSD = ZERO_BD
-    token0.feesUSD = ZERO_BD
-    token0.untrackedVolumeUSD = ZERO_BD
     token0.totalValueLocked = ZERO_BD
-    token0.totalValueLockedUSD = ZERO_BD
-    token0.totalValueLockedUSDUntracked = ZERO_BD
     token0.txCount = ZERO_BI
     token0.poolCount = ZERO_BI
     token0.whitelistPools = []
@@ -102,14 +81,8 @@ export function handlePoolCreatedHelper(
       return
     }
     token1.decimals = decimals
-    token1.derivedETH = ZERO_BD
     token1.volume = ZERO_BD
-    token1.volumeUSD = ZERO_BD
-    token1.untrackedVolumeUSD = ZERO_BD
-    token1.feesUSD = ZERO_BD
     token1.totalValueLocked = ZERO_BD
-    token1.totalValueLockedUSD = ZERO_BD
-    token1.totalValueLockedUSDUntracked = ZERO_BD
     token1.txCount = ZERO_BI
     token1.poolCount = ZERO_BI
     token1.whitelistPools = []
@@ -141,23 +114,13 @@ export function handlePoolCreatedHelper(
   pool.observationIndex = ZERO_BI
   pool.totalValueLockedToken0 = ZERO_BD
   pool.totalValueLockedToken1 = ZERO_BD
-  pool.totalValueLockedUSD = ZERO_BD
-  pool.totalValueLockedETH = ZERO_BD
-  pool.totalValueLockedUSDUntracked = ZERO_BD
   pool.volumeToken0 = ZERO_BD
   pool.volumeToken1 = ZERO_BD
-  pool.volumeUSD = ZERO_BD
-  pool.feesUSD = ZERO_BD
-  pool.untrackedVolumeUSD = ZERO_BD
 
   pool.collectedFeesToken0 = ZERO_BD
   pool.collectedFeesToken1 = ZERO_BD
-  pool.collectedFeesUSD = ZERO_BD
 
   pool.save()
   // create the tracked contract based on the template
   PoolTemplate.create(event.params.pool)
-  token0.save()
-  token1.save()
-  factory.save()
 }

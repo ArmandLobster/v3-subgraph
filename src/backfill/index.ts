@@ -1,9 +1,9 @@
 import { Address, BigInt, ethereum } from '@graphprotocol/graph-ts'
 
-import { ERC20 } from '../types/Factory/ERC20'
-import { Pool as PoolABI } from '../types/Factory/Pool'
-import { Pool, Token } from '../types/schema'
-import { Pool as PoolTemplate } from '../types/templates'
+import { ERC20 } from '../../generated/Factory/ERC20'
+import { Pool as PoolABI } from '../../generated/Factory/Pool'
+import { Pool, Token } from '../../generated/schema'
+import { Pool as PoolTemplate } from '../../generated/templates'
 import { convertTokenToDecimal } from '../utils'
 import { ZERO_BD, ZERO_BI } from '../utils/constants'
 import { StaticTokenDefinition } from '../utils/staticTokenDefinition'
@@ -23,14 +23,8 @@ function populateToken(tokenAddress: string, tokenOverrides: StaticTokenDefiniti
     return
   }
   token.decimals = decimals
-  token.derivedETH = ZERO_BD
   token.volume = ZERO_BD
-  token.volumeUSD = ZERO_BD
-  token.feesUSD = ZERO_BD
-  token.untrackedVolumeUSD = ZERO_BD
   token.totalValueLocked = ZERO_BD
-  token.totalValueLockedUSD = ZERO_BD
-  token.totalValueLockedUSDUntracked = ZERO_BD
   token.txCount = ZERO_BI
   token.poolCount = ZERO_BI
   token.whitelistPools = []
@@ -69,17 +63,10 @@ export function populateEmptyPools(
     pool.txCount = ZERO_BI
     pool.totalValueLockedToken0 = ZERO_BD
     pool.totalValueLockedToken1 = ZERO_BD
-    pool.totalValueLockedETH = ZERO_BD
-    pool.totalValueLockedUSD = ZERO_BD
-    pool.totalValueLockedUSDUntracked = ZERO_BD
     pool.volumeToken0 = ZERO_BD
     pool.volumeToken1 = ZERO_BD
-    pool.volumeUSD = ZERO_BD
-    pool.untrackedVolumeUSD = ZERO_BD
-    pool.feesUSD = ZERO_BD
     pool.collectedFeesToken0 = ZERO_BD
     pool.collectedFeesToken1 = ZERO_BD
-    pool.collectedFeesUSD = ZERO_BD
 
     // need fee tier
     const feeTier = poolContract.fee()
