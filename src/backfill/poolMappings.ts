@@ -14,21 +14,9 @@ import { Address } from '@graphprotocol/graph-ts'
 export const ARBITRUM_POOL_MAPPINGS: Array<Address[]> = [
   [
     Address.fromString('0x8c505fd76eed0945699265c7c7e5bbf756b7e5ad'),
-    Address.fromString('0xc6962004f452be9203591991d15f6b388e09e8d0'),
-    Address.fromString('0x82af49447d8a07e3bd95bd0d56f35241523fbab1'),
-    Address.fromString('0xaf88d065e77c8cc2239327c5edb3a432268e5831'),
-  ],
-  [
-    Address.fromString('0x8c505fd76eed0945699265c7c7e5bbf756b7e5ad'),
     Address.fromString('0xc31e54c7a869b9fcbecc14363cf510d1c41fa443'),
     Address.fromString('0x82af49447d8a07e3bd95bd0d56f35241523fbab1'),
     Address.fromString('0xff970a61a04b1ca14834a43f5de4533ebddb5cc8'),
-  ],
-  [
-    Address.fromString('0x8c505fd76eed0945699265c7c7e5bbf756b7e5ad'),
-    Address.fromString('0xc473e2aee3441bf9240be85eb122abb059a3b57c'),
-    Address.fromString('0x82af49447d8a07e3bd95bd0d56f35241523fbab1'),
-    Address.fromString('0xaf88d065e77c8cc2239327c5edb3a432268e5831'),
   ],
   [
     Address.fromString('0x8c505fd76eed0945699265c7c7e5bbf756b7e5ad'),
@@ -71,12 +59,6 @@ export const ARBITRUM_POOL_MAPPINGS: Array<Address[]> = [
     Address.fromString('0x53c6ca2597711ca7a73b6921faf4031eedf71339'),
     Address.fromString('0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f'),
     Address.fromString('0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9'),
-  ],
-  [
-    Address.fromString('0x8c505fd76eed0945699265c7c7e5bbf756b7e5ad'),
-    Address.fromString('0xac70bd92f89e6739b3a08db9b6081a923912f73d'),
-    Address.fromString('0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f'),
-    Address.fromString('0xff970a61a04b1ca14834a43f5de4533ebddb5cc8'),
   ],
 ]
 
