@@ -1,6 +1,6 @@
 import { Address, BigDecimal, BigInt, dataSource } from '@graphprotocol/graph-ts'
 
-import { OPTIMISM_POOL_MAPPINGS } from '../backfill/poolMappings'
+import { OPTIMISM_POOL_MAPPINGS, ARBITRUM_POOL_MAPPINGS } from '../backfill/poolMappings'
 import { StaticTokenDefinition } from './staticTokenDefinition'
 
 export enum ChainId {
@@ -89,6 +89,8 @@ export function getSubgraphConfig(): SubgraphConfig {
       ],
       whitelistTokens: [
         '0x82af49447d8a07e3bd95bd0d56f35241523fbab1', // WETH
+        '0xaf88d065e77c8cC2239327C5EDb3A432268e5831', // USDC
+        "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f", // WBTC
         '0xff970a61a04b1ca14834a43f5de4533ebddb5cc8', // USDC
         '0xda10009cbd5d07dd0cecc66161fc93d7c9000da1', // DAI
         '0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9', // USDT
@@ -108,7 +110,7 @@ export function getSubgraphConfig(): SubgraphConfig {
         },
       ],
       poolsToSkip: [],
-      poolMappings: [],
+      poolMappings: ARBITRUM_POOL_MAPPINGS,
     }
   } else if (selectedNetwork == AVALANCHE_NETWORK_NAME) {
     return {

@@ -220,19 +220,6 @@ export class Token extends Entity {
     this.set("poolCount", Value.fromBigInt(value));
   }
 
-  get totalValueLocked(): BigDecimal {
-    let value = this.get("totalValueLocked");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBigDecimal();
-    }
-  }
-
-  set totalValueLocked(value: BigDecimal) {
-    this.set("totalValueLocked", Value.fromBigDecimal(value));
-  }
-
   get whitelistPools(): Array<string> {
     let value = this.get("whitelistPools");
     if (!value || value.kind == ValueKind.NULL) {
@@ -496,32 +483,6 @@ export class Pool extends Entity {
 
   set collectedFeesToken1(value: BigDecimal) {
     this.set("collectedFeesToken1", Value.fromBigDecimal(value));
-  }
-
-  get totalValueLockedToken0(): BigDecimal {
-    let value = this.get("totalValueLockedToken0");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBigDecimal();
-    }
-  }
-
-  set totalValueLockedToken0(value: BigDecimal) {
-    this.set("totalValueLockedToken0", Value.fromBigDecimal(value));
-  }
-
-  get totalValueLockedToken1(): BigDecimal {
-    let value = this.get("totalValueLockedToken1");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBigDecimal();
-    }
-  }
-
-  set totalValueLockedToken1(value: BigDecimal) {
-    this.set("totalValueLockedToken1", Value.fromBigDecimal(value));
   }
 
   get liquidityProviderCount(): BigInt {

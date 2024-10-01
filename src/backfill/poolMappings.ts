@@ -10,6 +10,76 @@
 
 import { Address } from '@graphprotocol/graph-ts'
 
+
+export const ARBITRUM_POOL_MAPPINGS: Array<Address[]> = [
+  [
+    Address.fromString('0x8c505fd76eed0945699265c7c7e5bbf756b7e5ad'),
+    Address.fromString('0xc6962004f452be9203591991d15f6b388e09e8d0'),
+    Address.fromString('0x82af49447d8a07e3bd95bd0d56f35241523fbab1'),
+    Address.fromString('0xaf88d065e77c8cc2239327c5edb3a432268e5831'),
+  ],
+  [
+    Address.fromString('0x8c505fd76eed0945699265c7c7e5bbf756b7e5ad'),
+    Address.fromString('0xc31e54c7a869b9fcbecc14363cf510d1c41fa443'),
+    Address.fromString('0x82af49447d8a07e3bd95bd0d56f35241523fbab1'),
+    Address.fromString('0xff970a61a04b1ca14834a43f5de4533ebddb5cc8'),
+  ],
+  [
+    Address.fromString('0x8c505fd76eed0945699265c7c7e5bbf756b7e5ad'),
+    Address.fromString('0xc473e2aee3441bf9240be85eb122abb059a3b57c'),
+    Address.fromString('0x82af49447d8a07e3bd95bd0d56f35241523fbab1'),
+    Address.fromString('0xaf88d065e77c8cc2239327c5edb3a432268e5831'),
+  ],
+  [
+    Address.fromString('0x8c505fd76eed0945699265c7c7e5bbf756b7e5ad'),
+    Address.fromString('0x17c14d2c404d167802b16c450d3c99f88f2c4f4d'),
+    Address.fromString('0x82af49447d8a07e3bd95bd0d56f35241523fbab1'),
+    Address.fromString('0xff970a61a04b1ca14834a43f5de4533ebddb5cc8'),
+  ],
+  [
+    Address.fromString('0x8c505fd76eed0945699265c7c7e5bbf756b7e5ad'),
+    Address.fromString('0x641c00a822e8b671738d32a431a4fb6074e5c79d'),
+    Address.fromString('0x82af49447d8a07e3bd95bd0d56f35241523fbab1'),
+    Address.fromString('0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9'),
+  ],
+  [
+    Address.fromString('0x8c505fd76eed0945699265c7c7e5bbf756b7e5ad'),
+    Address.fromString('0xc82819f72a9e77e2c0c3a69b3196478f44303cf4'),
+    Address.fromString('0x82af49447d8a07e3bd95bd0d56f35241523fbab1'),
+    Address.fromString('0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9'),
+  ],
+  [
+    Address.fromString('0x8c505fd76eed0945699265c7c7e5bbf756b7e5ad'),
+    Address.fromString('0x2f5e87c9312fa29aed5c179e456625d79015299c'),
+    Address.fromString('0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f'),
+    Address.fromString('0x82af49447d8a07e3bd95bd0d56f35241523fbab1'),
+  ],
+  [
+    Address.fromString('0x8c505fd76eed0945699265c7c7e5bbf756b7e5ad'),
+    Address.fromString('0x5969efdde3cf5c0d9a88ae51e47d721096a97203'),
+    Address.fromString('0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f'),
+    Address.fromString('0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9'),
+  ],
+  [
+    Address.fromString('0x8c505fd76eed0945699265c7c7e5bbf756b7e5ad'),
+    Address.fromString('0x149e36e72726e0bcea5c59d40df2c43f60f5a22d'),
+    Address.fromString('0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f'),
+    Address.fromString('0x82af49447d8a07e3bd95bd0d56f35241523fbab1'),
+  ],
+  [
+    Address.fromString('0x8c505fd76eed0945699265c7c7e5bbf756b7e5ad'),
+    Address.fromString('0x53c6ca2597711ca7a73b6921faf4031eedf71339'),
+    Address.fromString('0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f'),
+    Address.fromString('0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9'),
+  ],
+  [
+    Address.fromString('0x8c505fd76eed0945699265c7c7e5bbf756b7e5ad'),
+    Address.fromString('0xac70bd92f89e6739b3a08db9b6081a923912f73d'),
+    Address.fromString('0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f'),
+    Address.fromString('0xff970a61a04b1ca14834a43f5de4533ebddb5cc8'),
+  ],
+]
+
 export const OPTIMISM_POOL_MAPPINGS: Array<Address[]> = [
   [
     Address.fromString('0x8c505fd76eed0945699265c7c7e5bbf756b7e5ad'),

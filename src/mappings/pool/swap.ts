@@ -46,8 +46,6 @@ export function handleSwapHelper(event: SwapEvent): void {
     pool.liquidity = event.params.liquidity
     pool.tick = BigInt.fromI32(event.params.tick as i32)
     pool.sqrtPrice = event.params.sqrtPriceX96
-    pool.totalValueLockedToken0 = pool.totalValueLockedToken0.plus(amount0)
-    pool.totalValueLockedToken1 = pool.totalValueLockedToken1.plus(amount1)
 
     // updated pool ratess
     const prices = sqrtPriceX96ToTokenPrices(pool.sqrtPrice, token0 as Token, token1 as Token)

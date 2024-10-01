@@ -24,7 +24,6 @@ function populateToken(tokenAddress: string, tokenOverrides: StaticTokenDefiniti
   }
   token.decimals = decimals
   token.volume = ZERO_BD
-  token.totalValueLocked = ZERO_BD
   token.txCount = ZERO_BI
   token.poolCount = ZERO_BI
   token.whitelistPools = []
@@ -61,8 +60,6 @@ export function populateEmptyPools(
     pool.observationIndex = ZERO_BI
     pool.liquidityProviderCount = ZERO_BI
     pool.txCount = ZERO_BI
-    pool.totalValueLockedToken0 = ZERO_BD
-    pool.totalValueLockedToken1 = ZERO_BD
     pool.volumeToken0 = ZERO_BD
     pool.volumeToken1 = ZERO_BD
     pool.collectedFeesToken0 = ZERO_BD
@@ -85,24 +82,11 @@ export function populateEmptyPools(
         token1.whitelistPools = newPools
       }
 
-      if (whitelistTokens.includes(token1.id)) {
+      if (whitelistTokens.includes(pool.token1)) {
         const newPools = token0.whitelistPools
         newPools.push(pool.id)
         token0.whitelistPools = newPools
       }
-
-      // populate the TVL by call contract balanceOf
-      const token0Contract = ERC20.bind(Address.fromString(pool.token0))
-      const tvlToken0Raw = token0Contract.balanceOf(Address.fromString(pool.id))
-      const tvlToken0Adjusted = convertTokenToDecimal(tvlToken0Raw, token0.decimals)
-      pool.totalValueLockedToken0 = tvlToken0Adjusted
-      token0.totalValueLocked = tvlToken0Adjusted
-
-      const token1Contract = ERC20.bind(Address.fromString(pool.token1))
-      const tvlToken1Raw = token1Contract.balanceOf(Address.fromString(pool.id))
-      const tvlToken1Adjusted = convertTokenToDecimal(tvlToken1Raw, token1.decimals)
-      pool.totalValueLockedToken1 = tvlToken1Adjusted
-      token1.totalValueLocked = tvlToken1Adjusted
 
       // add pool to tracked address and store entities
       PoolTemplate.create(Address.fromString(pool.id))

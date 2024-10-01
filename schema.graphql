@@ -27,8 +27,6 @@ type Token @entity {
   txCount: BigInt!
   # number of pools containing this token
   poolCount: BigInt!
-  # liquidity across all pools in token units
-  totalValueLocked: BigDecimal!
   # pools token is in that are white listed for USD pricing
   whitelistPools: [Pool!]!
 }
@@ -68,10 +66,6 @@ type Pool @entity {
   collectedFeesToken0: BigDecimal!
   # all time fees collected token1
   collectedFeesToken1: BigDecimal!
-  # total token 0 across all ticks
-  totalValueLockedToken0: BigDecimal!
-  # total token 1 across all ticks
-  totalValueLockedToken1: BigDecimal!
   # Fields used to help derived relationship
   liquidityProviderCount: BigInt! # used to detect new exchanges
   # hourly snapshots of pool data
