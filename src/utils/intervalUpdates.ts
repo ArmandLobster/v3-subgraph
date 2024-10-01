@@ -31,20 +31,13 @@ export function updatePoolHourData(event: ethereum.Event): PoolHourData {
   if (pool.token0Price.lt(poolHourData.low)) {
     poolHourData.low = pool.token0Price
   }
-
-  const token0Contract = ERC20.bind(Address.fromString(pool.token0))
-  const poolToken0Balance = token0Contract.balanceOf(Address.fromString(pool.id))
-  const token1Contract = ERC20.bind(Address.fromString(pool.token1))
-  const poolToken1Balance = token1Contract.balanceOf(Address.fromString(pool.id))
-
+  
   poolHourData.liquidity = pool.liquidity
   poolHourData.sqrtPrice = pool.sqrtPrice
   poolHourData.token0Price = pool.token0Price
   poolHourData.token1Price = pool.token1Price
   poolHourData.close = pool.token0Price
   poolHourData.tick = pool.tick
-  poolHourData.poolToken0Balance = poolToken0Balance
-  poolHourData.poolToken1Balance = poolToken1Balance
   poolHourData.txCount = poolHourData.txCount.plus(ONE_BI)
   poolHourData.save()
 

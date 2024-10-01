@@ -643,32 +643,6 @@ export class PoolHourData extends Entity {
     }
   }
 
-  get poolToken0Balance(): BigInt {
-    let value = this.get("poolToken0Balance");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set poolToken0Balance(value: BigInt) {
-    this.set("poolToken0Balance", Value.fromBigInt(value));
-  }
-
-  get poolToken1Balance(): BigInt {
-    let value = this.get("poolToken1Balance");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set poolToken1Balance(value: BigInt) {
-    this.set("poolToken1Balance", Value.fromBigInt(value));
-  }
-
   get volumeToken0(): BigDecimal {
     let value = this.get("volumeToken0");
     if (!value || value.kind == ValueKind.NULL) {
